@@ -1,0 +1,212 @@
+/*
+	Common style
+*/
+@media(max-width:767px){
+	#container {
+		width : 100%;
+		padding : 0 10px 0 10px;
+	}
+	#footer {
+		display:none;
+	}
+}
+@media(min-width:768px){
+	#container {
+		width : 100%;
+		padding : 0 10px 0 10px;
+		min-height: 750px;
+	}
+}
+#content {
+	margin : 0 auto;
+	width :90%;
+}
+.form-group .radio, .form-group .checkbox{
+	margin-left: 5px;
+}
+.board-label {
+	display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+/*
+	Member page
+*/
+#member_join_form {
+	margin : 0 auto;
+	max-width : 500px;
+}
+
+.has-error-msg {
+	padding-left: 5px;
+    color: #a94442;
+}
+
+/*
+	Board page
+*/
+/*
+		Board list page
+*/
+
+	.board-list {
+		margin : 0 auto;
+		max-width : 800px;
+	}
+		.board-list hr {
+			margin-top : 0px;
+			margin-bottom : 10px;
+		}
+		
+		#board_list_table {}
+		
+			#board_list_table thead {
+				text-align: center;
+			}
+			
+			#board_list_table tbody div {
+				display :inline-block;
+				height: 30px;
+			}
+			#board_list_table .id{
+				width : 5%;
+				text-align: center;
+			}
+			#board_list_table .title{
+				width : 64%;
+				padding-left: 10px;
+			}
+			#board_list_table .date{
+				width : 10%;
+				text-align: center;
+			}
+			#board_list_table .writer{
+				width : 15%;
+				text-align: center;
+			}
+			#board_list_table .viewing{
+				width : 3%;
+				text-align: center;
+			}
+		
+		.board-list .menu {}
+		
+			@media(max-width:767px){
+				.board-list button, .board-list a[role=button] {
+					width : 100%;
+				}
+				.board-list .menu .write {
+					padding: 5px 10px;
+				}
+			}
+			@media(min-width:768px){
+				.board-list .menu .search {
+					float : left;
+					width :80%;
+				}
+				.board-list .menu .write {
+					float : right;
+					text-align: right;
+					width :20%;
+				}
+			}
+			
+/*
+		Board write
+*/
+			
+	.board-write, .board-update {
+		margin : 0 auto;
+		max-width : 800px;
+	}
+		.board-write .menu, .board-update .menu {}
+		
+			@media(max-width:767px){
+				.board-write .menu button, .board-update .menu button {
+					margin: 3px 0 3px 0;
+					width : 100%;
+				}
+				.board-write .menu .write, .board-update .menu .write {
+					padding: 5px 10px;
+				}
+			}
+			@media(min-width:768px){
+				.board-write .menu .write, .board-update .menu .write {
+					float : right;
+					text-align: right;
+					width :20%;
+				}
+			}
+		.board-write .file, .board-update .file  {
+		    height : 30px;
+		}
+			.board-write .file input[type=file], .board-update .file input[type=file]{
+			    float : left;
+			},
+			
+			.board-update .file p{
+			    float : left;
+			    line-height: 30px;
+			}
+			
+/*
+		Board view
+*/
+			
+	.board-view {
+		margin : 0 auto;
+		max-width : 800px;
+	}
+		#board_view_table {}
+		
+			#board_view_table thead td {
+				text-align: center;
+			}
+			#board_view_table .id {
+				width:20%;
+			}
+			#board_view_table .name {
+				width:30%;
+			}
+			#board_view_table .date {
+				width:30%;
+			}
+			#board_view_table .viewing {
+				width:20%;
+			}
+			#board_view_table .content {
+				height:150px;
+			}
+			#board_view_table .panel {
+				margin-bottom:-14px;
+			}
+			#board_view_table .file {
+				color:#353535;
+				margin-right:10px;
+			}
+			
+		.board-view hr {
+			margin-bottom:10px;
+		}
+		
+		.board-view .menu {}
+			@media(max-width:767px){
+				.board-view .menu button {
+					margin: 3px 0 3px 0;
+					width : 100%;
+				}
+				.board-view .menu .update {
+					padding: 5px 10px;
+				}
+			}
+			@media(min-width:768px){
+				.board-view .menu .back {
+					float : left;
+				}
+				.board-view .menu .update {
+					float : right;
+					text-align: right;
+				}
+			}

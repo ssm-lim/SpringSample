@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	
+	<!-- MessageSource -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:properties/message" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	
+	<!-- DataSource -->
+	<bean id="dataSourceMySQL" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="core.log.jdbc.driver.MysqlDriver" />
+		<property name="url" value="jdbc:mysql://nickyv.iptime.org:3306/nickyv"/>
+		<property name="username" value="nickyv"/>
+		<property name="password" value="nickyv"/>
+	</bean>		
+	
+	
+	<!-- DB SessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceMySQL"/>
+        <property name="configLocation" value="/WEB-INF/spring/mybatis/mybatis-config.xml"/>
+    </bean>
+
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+    
+
+	<!-- transaction -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceMySQL"/>
+    </bean>
+    
+    <tx:annotation-driven transaction-manager="txManager"/>
+    
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+    	<tx:attributes>
+    		<tx:method name="*"/>
+    	</tx:attributes>
+    </tx:advice>
+    
+    <aop:config>
+		<aop:pointcut id="txPointcut" expression="execution(* spring.sample.service.*.*(..))" />    
+		<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
+    </aop:config>
+</beans>
