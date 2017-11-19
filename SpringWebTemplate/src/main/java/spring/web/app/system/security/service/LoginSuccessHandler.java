@@ -22,7 +22,6 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 
 
 public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
-	// SavedRequestAwareAuthenticationSuccessHandler  <- 로그인 전 페이지로 이동
 	
 	public LoginSuccessHandler(String defaultTargetUrl) {
 		setDefaultTargetUrl(defaultTargetUrl);

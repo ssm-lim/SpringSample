@@ -4,7 +4,8 @@
 <div id="content">
 	<div class="panel panel-default">
 	  <div class="panel-body">
-		  Main Page
+	  
+	    ${user.userId}
 	  </div>
 	</div>
 </div>

@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="SECURITY_ROLE")
-public class Role {
+public class SecurityRole {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int roleNo;

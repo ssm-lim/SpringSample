@@ -1,10 +1,7 @@
 package spring.web.app.system.security.service;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-
-import org.springframework.security.access.ConfigAttribute;
-import org.springframework.security.web.util.matcher.RequestMatcher;
+import java.util.Map;
 
 import spring.web.app.system.security.model.UserInfo;
 
@@ -25,5 +22,5 @@ public interface SecurityService {
 	 * 
 	 * @return URL과 ROLE의 매핑 리스트를 가져온다.
 	 */
-	public LinkedHashMap<RequestMatcher, List<ConfigAttribute>> getRolesAndUrl();
+	public List<Map<String, Object>> getRolesAndUrl();
 }

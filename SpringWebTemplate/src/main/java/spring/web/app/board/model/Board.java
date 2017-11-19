@@ -14,7 +14,7 @@ import lombok.Data;
 public class Board {
 
 	@Id
-	private int boardNo; 
+	private long boardNo; 
 	private String boardId;
 	
 	private String writer;
@@ -23,11 +23,12 @@ public class Board {
 	private String title;
 	private String contents;
 	
-	private int depth;
-	private int seq;
+	private short depth;
+	private short seq;
 	
 	private String updater;
 	private LocalDateTime updateDateTime;
 	
 	private int hit;
+	private int recommend;
 }

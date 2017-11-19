@@ -1,16 +1,14 @@
 package spring.web.app.system.security.service;
 
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.ConfigAttribute;
-import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Service;
 
 import spring.web.app.system.security.dao.SecurityDAO;
-import spring.web.app.system.security.model.RoleHierarchy;
+import spring.web.app.system.security.model.RoleHierarchyModel;
 import spring.web.app.system.security.model.UserInfo;
 
 @Service
@@ -26,25 +24,28 @@ public class SecurityServiceImpl implements SecurityService {
 
 	@Override
 	public String getRolesHierarchy() {
-		List<RoleHierarchy> rolesHierarchy = securityDAO.getRolesHierarchy();
-		Iterator<RoleHierarchy> itr = rolesHierarchy.iterator();
-        StringBuffer concatedRoles = new StringBuffer();
-        while (itr.hasNext()) {
-        	RoleHierarchy model = itr.next();
-        	if(model.getParentRole() != null) {
-        		concatedRoles.append(model.getParentRole().getRoleId());
-                concatedRoles.append(" > ");
-                concatedRoles.append(model.getRoleId());
-                concatedRoles.append("\n");
-        	}
-        }
-        return concatedRoles.toString();
+		List<RoleHierarchyModel> rolesHierarchy = securityDAO.getRolesHierarchy();
+		if(rolesHierarchy != null){
+			Iterator<RoleHierarchyModel> itr = rolesHierarchy.iterator();
+	        StringBuffer concatedRoles = new StringBuffer();
+	        RoleHierarchyModel model;
+	        while (itr.hasNext()) {
+	        	model = itr.next();
+	        	if(model == null || model.getParentRole() == null) continue;
+	        	concatedRoles.append(model.getParentRole().getRoleId());
+	            concatedRoles.append(" > ");
+	            concatedRoles.append(model.getRoleId());
+	            concatedRoles.append("\n");
+	        }
+	        System.out.println(concatedRoles.toString());
+	        return concatedRoles.toString();
+		}
+		return "";
 	}
 
 	@Override
-	public LinkedHashMap<RequestMatcher, List<ConfigAttribute>> getRolesAndUrl() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Map<String, Object>> getRolesAndUrl() {
+		return securityDAO.getRolesAndUrl();
 	}
 
 }

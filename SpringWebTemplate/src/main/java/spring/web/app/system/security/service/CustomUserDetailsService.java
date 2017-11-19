@@ -21,12 +21,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 	
 	private RoleHierarchyImpl roleHierarchy;
 	
-	public CustomUserDetailsService() {
-        this.roleHierarchy = new RoleHierarchyImpl();
+	public CustomUserDetailsService(RoleHierarchyImpl roleHierarchy) {
+        this.roleHierarchy = roleHierarchy;
     }
 
 	@Override
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+		
 		UserInfo user = securityService.getUserByUserId(userId);
 		if(user == null) {
 			throw new UsernameNotFoundException("존재하지 않는 사용자입니다.");
@@ -39,12 +40,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 			throw new UsernameNotFoundException("권한정보가 없는 사용자입니다.");
         }
 		
-		return new User(user.getUserId(), user.getPassword(), user.isEnabled(), true, true, true, buildRoleAuthorities(authorities));
+		return new User(user.getUserName(), user.getPassword(), user.isEnabled(), true, true, true, buildRoleAuthorities(authorities));
 	}
 
-	/* RoleHierarchyImpl 에서 저장한 Role Hierarchy 정보가 저장된다. */
 	private Collection<? extends GrantedAuthority> buildRoleAuthorities(List<GrantedAuthority> authorities) {
-		roleHierarchy.setHierarchy(securityService.getRolesHierarchy());
 		return roleHierarchy.getReachableGrantedAuthorities(authorities);
 	}
+	
 }

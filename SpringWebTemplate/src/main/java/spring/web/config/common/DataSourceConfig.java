@@ -24,7 +24,6 @@ public class DataSourceConfig {
 
 	@Autowired
 	private Environment env;
-	
 //	@Bean
 //	public DataSource dataSource() {
 //		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
@@ -51,13 +50,7 @@ public class DataSourceConfig {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setPhysicalNamingStrategy(physicalNamingStrategy());
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan(new String[] { 
-				"spring.web.app.common.model", 
-				"spring.web.app.board.model", 
-				"spring.web.app.system.security.model",
-				"spring.web.app.system.*.model",
-				"spring.web.app.*.*.model"
-		});
+		sessionFactory.setPackagesToScan(new String[] { "spring.web.app.common.model", "spring.web.app.system.security.model" });
 		sessionFactory.setHibernateProperties(getHibernateProperties());
 		return sessionFactory;
 	}
