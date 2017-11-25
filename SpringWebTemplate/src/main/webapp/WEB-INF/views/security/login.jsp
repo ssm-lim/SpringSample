@@ -3,8 +3,10 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %> 
 
 <script type="text/javascript">
-	$('#goLogin').click(function(){
-		$('#loginForm').submit();
+	$(document).ready(function(){
+		$('#goLogin').click(function(){
+			$('#loginForm').submit();
+		});
 	});
 </script>
 <div>

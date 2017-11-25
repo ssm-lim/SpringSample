@@ -19,6 +19,7 @@ public class BoardDAO extends AbstractDAO {
 		query.setFirstResult((paging.getCurrentPage() - 1) * paging.COUNT_PER_PAGE);
         query.setMaxResults(paging.COUNT_PER_PAGE);
 		return query.getResultList();
+		//https://kodejava.org/how-do-i-limit-the-hibernate-query-result/
 	}
 
 	public int getBoardCount() {

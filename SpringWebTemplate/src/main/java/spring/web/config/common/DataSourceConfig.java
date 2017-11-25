@@ -24,6 +24,10 @@ public class DataSourceConfig {
 
 	@Autowired
 	private Environment env;
+	// http://www.bytestree.com/hibernate/spring-4-hibernate-5-example/
+	// https://slipp.net/wiki/pages/viewpage.action?pageId=22282248
+
+	//https://rebeccacho.gitbooks.io/spring-study-group/content/chapter3.html
 //	@Bean
 //	public DataSource dataSource() {
 //		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();

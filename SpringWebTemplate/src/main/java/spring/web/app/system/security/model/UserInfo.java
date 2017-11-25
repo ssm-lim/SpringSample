@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -23,12 +24,13 @@ public class UserInfo implements GrantedAuthority {
 	private int userNo;
 	@Id
 	private String userId;
-	private transient String password;
+	private String password;
 	private String userName;
 	private String roleId;
 	private int point;
 	private Date lastDate;
 	
+	@Transient
 	private boolean isEnabled = true;
 
 	@Override

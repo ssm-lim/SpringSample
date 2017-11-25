@@ -39,7 +39,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		if (user.getAuthority() == null) {
 			throw new UsernameNotFoundException("권한정보가 없는 사용자입니다.");
         }
-		
+		 Collection<? extends GrantedAuthority>  buildRoleAuthorities = buildRoleAuthorities(authorities);
 		return new User(user.getUserName(), user.getPassword(), user.isEnabled(), true, true, true, buildRoleAuthorities(authorities));
 	}
 

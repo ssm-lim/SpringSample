@@ -21,7 +21,7 @@ import org.springframework.web.servlet.mvc.Controller;
 		@Filter(type = FilterType.ASSIGNABLE_TYPE, classes = Service.class),
 		@Filter(type = FilterType.ASSIGNABLE_TYPE, classes = Repository.class)
 	}
-)
+)//http://zgundam.tistory.com/82
 public class CommonConfig {
 	
 	@Bean
@@ -32,6 +32,9 @@ public class CommonConfig {
 		return msg;
 	}
 	
+	// https://slipp.net/wiki/pages/viewpage.action?pageId=22282248
+		// http://kwonnam.pe.kr/wiki/springframework/propertysource
+		// http://goodcodes.tistory.com/entry/Spring-Java-Config-Properties
 	@Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();

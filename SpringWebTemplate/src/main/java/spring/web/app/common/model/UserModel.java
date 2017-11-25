@@ -14,13 +14,13 @@ import lombok.Data;
 
 
 @Data
-@Entity
-@Table(name="TB_USER")
+//@Entity
+//@Table(name="TB_USER")
 public class UserModel {
 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userNo;
-	@Id
+//	@Id
 	private String userId;
 	private String password;
 	private String userName;
@@ -29,9 +29,9 @@ public class UserModel {
 	private String role;
 	private Date regDate;
 	private Date lastDate;
-	@Column(name="GENDER", columnDefinition="char(1)")
+//	@Column(name="GENDER", columnDefinition="char(1)")
 	private String gender;
-	@Transient
+//	@Transient
 	private String[] interests;
 	
 }

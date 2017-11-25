@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import spring.web.app.common.model.UserModel;
 import spring.web.app.member.service.MemberService;
 
 @Controller

@@ -26,7 +26,7 @@
 	            <li><a href="/member/join">Sign up</a></li>
 	            <li><a href="/board">Board</a></li>
 	            <li role="separator" class="divider"></li>
-	            <li><a href="/logout">Sign out</a></li>
+	            <li><a href="/auth/logout">Sign out</a></li>
 	          </ul>
 	        </li>
 	      </ul>

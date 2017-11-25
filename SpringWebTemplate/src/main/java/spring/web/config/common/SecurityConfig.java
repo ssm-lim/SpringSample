@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.access.vote.AffirmativeBased;
 import org.springframework.security.access.vote.RoleHierarchyVoter;
@@ -34,9 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.addFilterAfter(filterSecurityInterceptor(), FilterSecurityInterceptor.class)
 			.authorizeRequests()
 				.antMatchers("/resources/**").permitAll()
-//				.antMatchers("/board/**").authenticated()
-//				.antMatchers("/admin/**").access("hasRole(ADMIN)")
-//				.antMatchers("/auth/login", "/auth/login/*").permitAll()
 //				.antMatchers("/").permitAll()
 				.and()
 			.formLogin()
@@ -47,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 				.and()
 			.logout()
-				.logoutUrl("/j_spring_security_logout")
+				.logoutUrl("/auth/logout")
 //				.logoutSuccessHandler(null)
 				.invalidateHttpSession(true)
 				.and()
@@ -130,6 +128,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean public RoleAndUrlResourcesMapLoader roleAndUrlResourcesMapLoader() {
 		return new RoleAndUrlResourcesMapLoader();
 	}
+	
+	// **http://autumnly.tistory.com/55
+	// http://aoruqjfu.fun25.co.kr/index.php/post/657
+	// http://netframework.tistory.com/entry/REST-API-%EA%B5%AC%EC%84%B1%EC%8B%9C-Spring-Security-%EA%B5%AC%ED%98%84
 	
 //	private CsrfTokenRepository csrfTokenRepository() 
 //	{ 
