@@ -129,10 +129,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new RoleAndUrlResourcesMapLoader();
 	}
 	
-	// **http://autumnly.tistory.com/55
-	// http://aoruqjfu.fun25.co.kr/index.php/post/657
-	// http://netframework.tistory.com/entry/REST-API-%EA%B5%AC%EC%84%B1%EC%8B%9C-Spring-Security-%EA%B5%AC%ED%98%84
-	
 //	private CsrfTokenRepository csrfTokenRepository() 
 //	{ 
 //	    HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository(); 
